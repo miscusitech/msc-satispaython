@@ -48,3 +48,14 @@ def get_payment_details(
 ) -> Response:
     with SatispayClient(key_id, rsa_key, staging) as client:
         return client.get_payment_details(payment_id, headers)
+
+def update_payment(
+    key_id: str,
+    rsa_key: RSAPrivateKey,
+    payment_id: str,
+    action: str,
+    headers: Optional[Headers] = None,
+    staging: bool = False,
+) -> Response:
+    with SatispayClient(key_id, rsa_key, staging) as client:
+        return client.update_payment(payment_id, action, headers)

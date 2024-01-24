@@ -1,4 +1,10 @@
-from .api import create_payment, get_payment_details, obtain_key_id, test_authentication
+from .api import (
+    create_payment, 
+    get_payment_details, 
+    update_payment, 
+    obtain_key_id, 
+    test_authentication,
+)
 from .auth import SatispayAuth
 from .client import AsyncSatispayClient, SatispayClient
 
@@ -14,6 +20,7 @@ __all__ = [
     "test_authentication",
     "create_payment",
     "get_payment_details",
+    "update_payment",
     "SatispayClient",
     "AsyncSatispayClient",
     "SatispayAuth",

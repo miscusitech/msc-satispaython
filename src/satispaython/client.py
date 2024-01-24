@@ -49,6 +49,12 @@ class SatispayClient(Client):
         target = URL(f"/g_business/v1/payments/{payment_id}")
         return self.get(target, headers=headers)
 
+    def update_payment(
+        self, payment_id: str, action: str, headers: Optional[Headers] = None
+    ) -> Response:
+        target = URL(f"/g_business/v1/payments/{payment_id}")
+        return self.put(target, json={"action": action}, headers=headers)
+
 
 class AsyncSatispayClient(AsyncClient):
     def __init__(
@@ -92,3 +98,9 @@ class AsyncSatispayClient(AsyncClient):
     ) -> Response:
         target = URL(f"/g_business/v1/payments/{payment_id}")
         return await self.get(target, headers=headers)
+
+    async def update_payment(
+        self, payment_id: str, action: str, headers: Optional[Headers] = None
+    ) -> Response:
+        target = URL(f"/g_business/v1/payments/{payment_id}")
+        return await self.put(target, json={"action": action}, headers=headers)
